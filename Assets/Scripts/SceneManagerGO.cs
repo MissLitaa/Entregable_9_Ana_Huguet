@@ -2,38 +2,39 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class SceneManagerGO : MonoBehaviour
 {
-    public GameObject UIControl;
+
+    private UIManager UIControl;
     public static Vector3 playerPosition;
+    public GameObject player;
 
-    void Start()
+    public void LastPosition()
     {
-        
-    }
-    void LastPosition()
-    {
-        playerPosition = transform.position;
+        playerPosition = player.transform.position;
     }
 
-    void LoadScene1()
-    { 
-        Invoke("LastPosition", 1);
+    public void LoadScene1()
+    {
+        LastPosition();
         SceneManager.LoadScene(sceneName: "Scene_2");
-        Invoke("UpdateTransicionScenes", 1);
-        transform.position = playerPosition;
+        UIControl.UpdateTransicionScenes();
+        UIControl.UpdateTransicionUltima();
+        player.gameObject.transform.position = playerPosition;
     }
 
-    void LoadScene2()
+    public void LoadScene2()
     {
-        Invoke("LastPosition", 1);
+        LastPosition();
         SceneManager.LoadScene(sceneName: "Scene_1");
-        Invoke("UpdateTransicionScenes", 1);
-        transform.position = playerPosition;
+        UIControl.UpdateTransicionScenes();
+        UIControl.UpdateTransicionUltima();
+        player.gameObject.transform.position = playerPosition;
     }
 
-    
 
-  
+
+
 }

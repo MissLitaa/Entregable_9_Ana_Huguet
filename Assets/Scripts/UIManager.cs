@@ -12,16 +12,16 @@ public class UIManager : MonoBehaviour
     public float sumaTransicion = 1f;
     public float totalTransiciones;
 
-    void UpdateTransicionScenes()
+    public void UpdateTransicionScenes()
     {
         totalTransiciones = baseTransicion + sumaTransicion;
-        transicionesSesion.text = $"Transiciones entre escenas: {totalTransiciones}";
+        transicionesSesion.text = $"Transiciones entre escenas: {totalTransiciones.ToString()}";
         
     }
 
-    void UpdateTransicionUltima()
+     public void UpdateTransicionUltima()
     {
-        transicionesUltimaSesion.text = $"Transiciones en la última sesión: {totalTransiciones}";
+        transicionesUltimaSesion.text = $"Transiciones en la última sesión: {totalTransiciones.ToString()}";
     }
 
 }
