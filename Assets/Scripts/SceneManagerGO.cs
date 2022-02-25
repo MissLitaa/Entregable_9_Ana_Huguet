@@ -10,7 +10,7 @@ public class SceneManagerGO : MonoBehaviour
     private UIManager UIControl;
     public static Vector3 playerPosition;
     public GameObject player;
-
+    
     public void LastPosition()
     {
         playerPosition = player.transform.position;
@@ -19,6 +19,7 @@ public class SceneManagerGO : MonoBehaviour
     public void LoadScene1()
     {
         LastPosition();
+        player.transform.position = playerPosition;
         SceneManager.LoadScene(sceneName: "Scene_2");
         UIControl.UpdateTransicionScenes();
         UIControl.UpdateTransicionUltima();
@@ -28,6 +29,7 @@ public class SceneManagerGO : MonoBehaviour
     public void LoadScene2()
     {
         LastPosition();
+        player.transform.position = playerPosition;
         SceneManager.LoadScene(sceneName: "Scene_1");
         UIControl.UpdateTransicionScenes();
         UIControl.UpdateTransicionUltima();
