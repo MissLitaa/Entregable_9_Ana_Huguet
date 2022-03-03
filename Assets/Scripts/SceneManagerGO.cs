@@ -6,37 +6,47 @@ using TMPro;
 
 public class SceneManagerGO : MonoBehaviour
 {
+    public static SceneManagerGO sceneMan;
+    public  GameObject player;
+    public Vector3 playerPos;
+    public float x;
+    public float y;
+    public float z;
 
-    private UIManager UIControl;
-    public static Vector3 playerPosition;
-    public GameObject player;
-    
-    public void LastPosition()
+    private void Awake()
     {
-        playerPosition = player.transform.position;
-    }
+        
+        if (sceneMan == null)
+        {
+            sceneMan = this;
+            DontDestroyOnLoad(gameObject);
+        }
 
+        else
+        {
+            Destroy(gameObject);
+        }
+
+    }
     public void LoadScene1()
     {
-        LastPosition();
-        player.transform.position = playerPosition;
-        SceneManager.LoadScene(sceneName: "Scene_2");
-        UIControl.UpdateTransicionScenes();
-        UIControl.UpdateTransicionUltima();
-        player.gameObject.transform.position = playerPosition;
+        playerPosition();
+        SceneManager.LoadScene(sceneName: "Scene2");
     }
 
     public void LoadScene2()
     {
-        LastPosition();
-        player.transform.position = playerPosition;
-        SceneManager.LoadScene(sceneName: "Scene_1");
-        UIControl.UpdateTransicionScenes();
-        UIControl.UpdateTransicionUltima();
-        player.gameObject.transform.position = playerPosition;
+        playerPosition();
+        SceneManager.LoadScene(sceneName: "Scene1");
+
     }
 
+    public void playerPosition()
+    {
 
-
-
+       x = PlayerPrefs.GetFloat("x");
+       y = PlayerPrefs.GetFloat("y");
+       z = PlayerPrefs.GetFloat("z");
+        playerPos = new Vector3(x, y, z);
+    }
 }

@@ -45,3 +45,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transicionesSesion: {fileID: 0}
   transicionesUltimaSesion: {fileID: 0}
+  baseTransicion: 0
+  sumaTransicion: 1
+  totalTransiciones: 0
